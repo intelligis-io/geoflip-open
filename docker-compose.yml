@@ -1,0 +1,35 @@
+services:
+  redis:
+    container_name: geoflip-redis
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass ${REDIS_PASSWORD}  # Add this line
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}  # Optionally, specify it as an environment variable for clarity
+
+  app:
+    container_name: geoflip-open
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+      - CLIENT_URL=${CLIENT_URL}
+      - API_URL=${API_URL}
+      - UPLOADS_PATH=${UPLOADS_PATH}
+      - OUTPUT_PATH=${OUTPUT_PATH}
+      - REDIS_HOST=geoflip-redis
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_DB=${REDIS_DB}
+      - REDIS_PASSWORD=${REDIS_PASSWORD} 
+      - REDIS_SSL=${REDIS_SSL}
+    depends_on:
+      redis:
+        condition: service_started
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:

@@ -1,0 +1,696 @@
+{
+	"info": {
+		"_postman_id": "d30c71ef-0e09-4cf2-a31c-58e5ab29ee24",
+		"name": "GeoFlip Open",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31939184",
+		"_collection_link": "https://intelligis-3800.postman.co/workspace/Intelligis-Workspace~cbbb0f42-4fc2-4f98-8d52-75c920718d89/collection/31939184-d30c71ef-0e09-4cf2-a31c-58e5ab29ee24?action=share&source=collection_link&creator=31939184"
+	},
+	"item": [
+		{
+			"name": "merge",
+			"item": [
+				{
+					"name": "geojson /v1/transform/geojson/merge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"input_geojson_list\":[\r\n        {\r\n            \"type\": \"FeatureCollection\",\r\n            \"features\": [\r\n                {\r\n                    \"type\": \"Feature\",\r\n                    \"geometry\": {\r\n                        \"type\": \"Point\",\r\n                        \"coordinates\": [102.0, 0.5]\r\n                    },\r\n                    \"properties\": {\r\n                        \"prop0\": \"value0\"\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"type\": \"FeatureCollection\",\r\n            \"features\": [\r\n                {\r\n                    \"type\": \"Feature\",\r\n                    \"geometry\": {\r\n                        \"type\": \"LineString\",\r\n                        \"coordinates\": [\r\n                            [102.0, 0.0],\r\n                            [103.0, 1.0],\r\n                            [104.0, 0.0],\r\n                            [105.0, 1.0]\r\n                        ]\r\n                    },\r\n                    \"properties\": {\r\n                        \"prop0\": \"value0\",\r\n                        \"prop1\": 0.0\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n],\r\n  \"output_format\": \"geojson\",\r\n  \"output_crs\": \"EPSG:4326\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/geojson/merge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"geojson",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gpkg /v1/transform/gpkg/merge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/C:/Users/nicholasc/Downloads/geopackage_1.gpkg",
+										"/C:/Users/nicholasc/Downloads/geopackage_2.gpkg",
+										"/C:/Users/nicholasc/Downloads/geopackage_3.gpkg"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"geojson\",\n  \"transformations\":[\n    {\n        \"type\":\"buffer\",\n        \"distance\": 200,\n        \"units\": \"meters\"\n    }\n   ]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/gpkg/merge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"gpkg",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shp /v1/transform/shp/merge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/D:/temp/Geoflip/a_to_c.zip",
+										"/D:/temp/Geoflip/d_to_f.zip"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"geojson\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/shp/merge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"shp",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dxf /v1/transform/dxf/merge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/C:/Users/Nicho/Downloads/dxf_2.dxf",
+										"/C:/Users/Nicho/Downloads/dxf_3.dxf",
+										"/C:/Users/Nicho/Downloads/dxf_1.dxf"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"geojson\",\n  \"input_crs_mapping\": [\"EPSG:4326\"],\n  \"transformations\": [\n    {\n      \"type\": \"buffer\",\n      \"distance\": 200,\n      \"units\": \"meters\"\n    }\n  ]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/dxf/merge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"dxf",
+								"merge"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "append",
+			"item": [
+				{
+					"name": "geojson /v1/transform/geojson/append",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"append_geojson_list\": [\r\n    {\r\n      \"type\": \"FeatureCollection\",\r\n      \"features\": [\r\n        {\r\n          \"type\": \"Feature\",\r\n          \"geometry\": {\r\n            \"type\": \"Point\",\r\n            \"coordinates\": [102.0, 0.5]\r\n          },\r\n          \"properties\": {\r\n            \"prop0\": \"value0\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"type\": \"FeatureCollection\",\r\n      \"features\": [\r\n        {\r\n          \"type\": \"Feature\",\r\n          \"geometry\": {\r\n            \"type\": \"Point\",\r\n            \"coordinates\": [103.0, 1.5]\r\n          },\r\n          \"properties\": {\r\n            \"prop0\": \"value1\"\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"target_geojson\": {\r\n    \"type\": \"FeatureCollection\",\r\n    \"features\": [\r\n      {\r\n        \"type\": \"Feature\",\r\n        \"geometry\": {\r\n          \"type\": \"Point\",\r\n          \"coordinates\": [100.0, 0.0]\r\n        },\r\n        \"properties\": {\r\n          \"prop0\": \"value2\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"output_format\": \"shp\",\r\n  \"output_crs\": \"EPSG:4326\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/geojson/append",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"geojson",
+								"append"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gpkg /v1/transform/gpkg/append",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"///localhost/temp/one.gpkg",
+										"///localhost/temp/three.gpkg",
+										"///localhost/temp/two.gpkg"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"geojson\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "///localhost/temp/target.gpkg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/gpkg/append",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"gpkg",
+								"append"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "shp /v1/transform/shp/append",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/nicholasc/Downloads/merge_1.zip"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/C:/Users/nicholasc/Downloads/merge_3.zip",
+										"/C:/Users/nicholasc/Downloads/merge_2.zip"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"shp\",\n  \"output_crs\":\"EPSG:4326\"\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/shp/append",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"shp",
+								"append"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dxf /v1/transform/dxf/append",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"taskid\", jsonData.task_id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/C:/Users/Nicho/Downloads/dxf_2.dxf",
+										"/C:/Users/Nicho/Downloads/dxf_3.dxf",
+										"/C:/Users/Nicho/Downloads/dxf_4.dxf"
+									]
+								},
+								{
+									"key": "config",
+									"value": "{\n  \"output_format\": \"geojson\",\n  \"input_crs\": \"EPSG:4326\",\n  \"append_crs_mapping\": [\"EPSG:4326\"]\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Nicho/Downloads/dxf_1.dxf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/dxf/append",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"dxf",
+								"append"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "async",
+			"item": [
+				{
+					"name": "async result /v1/transform/result",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"try{\r",
+									"  pm.environment.set(\"outputurl\", jsonData.output_url);\r",
+									"} catch {\r",
+									"\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/v1/transform/result/{{taskid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"v1",
+								"transform",
+								"result",
+								"{{taskid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "async output",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{outputurl}}",
+							"host": [
+								"{{outputurl}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "geojson /v1/transform/geojson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"taskid\", jsonData.task_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"input_geojson\":{\r\n  \"type\": \"FeatureCollection\",\r\n  \"features\": [\r\n    {\r\n      \"type\": \"Feature\",\r\n      \"properties\": {\"id\": 1, \"group\": \"A\"},\r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [\r\n          [\r\n            [-73.981, 40.768],\r\n            [-73.981, 40.769],\r\n            [-73.982, 40.769],\r\n            [-73.982, 40.768],\r\n            [-73.981, 40.768]\r\n          ]\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"type\": \"Feature\",\r\n      \"properties\": {\"id\": 2, \"group\": \"A\"},\r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [\r\n          [\r\n            [-73.983, 40.768],\r\n            [-73.983, 40.769],\r\n            [-73.984, 40.769],\r\n            [-73.984, 40.768],\r\n            [-73.983, 40.768]\r\n          ]\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"type\": \"Feature\",\r\n      \"properties\": {\"id\": 3, \"group\": \"B\"},\r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [\r\n          [\r\n            [-73.985, 40.768],\r\n            [-73.985, 40.769],\r\n            [-73.986, 40.769],\r\n            [-73.986, 40.768],\r\n            [-73.985, 40.768]\r\n          ]\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n    },\r\n  \"output_format\": \"dxf\",\r\n  \"output_crs\": \"EPSG:4326\",\r\n  \"transformations\":[\r\n    {\r\n        \"type\":\"buffer\",\r\n        \"distance\": 100,\r\n        \"units\": \"meters\"\r\n    },\r\n    {\r\n        \"type\":\"union\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/v1/transform/geojson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"transform",
+						"geojson"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shp /v1/transform/shp",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"taskid\", jsonData.task_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "apiKey",
+						"value": "{{apikey}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Nicho/Downloads/small_cadastre.zip"
+						},
+						{
+							"key": "config",
+							"value": "{\n  \"output_format\": \"gpkg\",\n  \"output_crs\":\"EPSG:4326\"\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/v1/transform/shp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"transform",
+						"shp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gpkg /v1/transform/gpkg",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"taskid\", jsonData.task_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Nicho/Downloads/geoflip222222.gpkg"
+						},
+						{
+							"key": "config",
+							"value": "{\n  \"output_format\": \"shp\",\n  \"output_crs\":\"EPSG:28350\",\n  \"transformations\":[\n    {\n        \"type\":\"buffer\",\n        \"distance\": 200,\n        \"units\": \"meters\"\n    }\n  ]\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/v1/transform/gpkg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"transform",
+						"gpkg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dxf /v1/transform/dxf",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"taskid\", jsonData.task_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Nicho/Downloads/geoflip_2024-09-04T04-03-59-321Z.dxf"
+						},
+						{
+							"key": "config",
+							"value": "{\n  \"output_format\": \"gpkg\",\n  \"input_crs\":\"EPSG:4326\",\n  \"output_crs\":\"EPSG:4326\",\n  \"transformations\":[\n    {\n        \"type\":\"buffer\",\n        \"distance\": 200,\n        \"units\": \"meters\"\n    }\n  ]\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/v1/transform/dxf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"v1",
+						"transform",
+						"dxf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
