@@ -1,4 +1,3 @@
-"""
 # Geoflip Open
 
 **Geoflip Open** is the open-source backend of [Geoflip](https://geoflip.io) — a modern, self-hostable spatial API for transforming geospatial files like **Shapefile**, **DXF**, **GeoJSON**, and **GeoPackage**.
@@ -6,7 +5,8 @@
 It supports transformations such as buffering, clipping, appending, and CRS conversion — all accessible via a simple HTTP API. Built with Flask, Celery, and designed for developers who want geoprocessing power without requiring enterprise tools.
 
 📚 View the API documentation: [docs.geoflip.io](https://docs.geoflip.io)
-Check out the YouTube channel: [video tutorials](https://youtube.com/@geoflip)
+
+📺 Check out the YouTube channel: [video tutorials](https://youtube.com/@geoflip)
 
 ---
 
@@ -177,4 +177,3 @@ or checkout our youtube for [video tutorials](https://youtube.com/@geoflip)
 ## 📄 License
 
 BSL — free to use, fork, and extend.
-"""
