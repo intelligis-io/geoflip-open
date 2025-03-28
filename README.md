@@ -104,7 +104,7 @@ Use Postman, Insomnia, curl, or your frontend app
     }
   ]
     },
-  "output_format": "geojson",
+  "output_format": "shp",
   "output_crs": "EPSG:4326",
   "transformations":[
     {
